@@ -1,0 +1,30 @@
+{
+  "name": "omnisafe-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon --es-module-specifier-resolution=node ./server.js --max-http-header-size 15000",
+    "node": "node --es-module-specifier-resolution=node ./server.js --max-http-header-size 15000"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.3.3",
+    "node-fetch": "^3.2.6",
+    "pg": "^8.8.0",
+    "sequelize": "^6.27.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}
