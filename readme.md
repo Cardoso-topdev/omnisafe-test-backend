@@ -4,6 +4,7 @@
 > - Launch with port 3001. Port defined in the .env file.
 > - Setup MySQL DB with Sequelize for ORM(Object Relation Mapper)
 > - Create APIs such as SignUp, SignIn, and so on
+> - ...
 
 ## Launch Script
 

@@ -1,18 +1,26 @@
-export default (sequelize, Sequelize) => {
-  return sequelize.define('users', {
-    username: {
-      type: Sequelize.STRING
+import bcrypt from 'bcrypt'
+
+export default (sequelize, Sequelize) => sequelize.define('users', {
+  username: {
+    type: Sequelize.STRING
+  },
+  surname: {
+    type: Sequelize.STRING
+  },
+  email: {
+    type: Sequelize.STRING
+  },
+  password: {
+    type: Sequelize.STRING
+  }
+}, {
+  timestamps: false,
+  instanceMethods: {
+    generateHash(password) {
+      return bcrypt.hash(password, bcrypt.genSaltSync(8));
     },
-    surname: {
-      type: Sequelize.STRING
-    },
-    email: {
-      type: Sequelize.STRING
-    },
-    password: {
-      type: Sequelize.STRING
+    validPassword(password) {
+      return bcrypt.compare(password, this.password);
     }
-  }, {
-    timestamps: false
-  })
-}
+  }
+})

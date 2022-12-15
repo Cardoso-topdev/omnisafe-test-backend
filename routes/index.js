@@ -1,25 +1,13 @@
 import { Router } from 'express';
-import { init } from '../controllers/main.controller';
-import { signUp } from '../controllers/users.controller';
-// import { getAllCategories } from '../controllers/main.controller'
+import { getEventTypes } from '../controllers/events.controller';
+import { signIn, signUp } from '../controllers/users.controller';
+import { checkDuplicateEmail, verifyToken } from '../middleware/UserMiddleware';
+
 var router = Router();
 
-router.post('/sign-up', async(req, res, next) => {
-  const result = await signUp(req.body)
-  console.log('============================')
-  console.log(result.user.dataValues)
-  console.log('============================')
-  if (result.status) {
-    res.status(200).json({
-      result: 'success', 
-      data: result.user.dataValues
-    })
-  } else {
-    res.status(400).json({
-      result: 'failure',
-      message: 'User already exist!'
-    })
-  }
-})
+router.post('/sign-up', [checkDuplicateEmail], signUp)
+router.post('/sign-in', signIn)
+
+router.get('/event-types', [verifyToken], getEventTypes)
 
 export default router;

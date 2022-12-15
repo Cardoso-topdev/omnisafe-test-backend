@@ -9,7 +9,6 @@ const app = express();
 app.use(cors())
 
 initSequelize()
-db.sequelize.sync()
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -17,8 +16,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
-app.listen(process.env.PORT || 3000, '0.0.0.0', () => {
-  console.log('listening on ', process.env.PORT || 3000)
+app.listen(process.env.PORT || '3001', '0.0.0.0', () => {
+  console.log('listening on ', process.env.PORT || '3001')
 })
 
 app.use(function(req, res, next) {
